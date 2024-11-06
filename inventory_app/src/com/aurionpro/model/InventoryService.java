@@ -264,11 +264,6 @@ public class InventoryService {
 			int supplierId = supplierIdCheck();
 			for(Supplier supplier : inventory.getSuppliers()){
 				if(supplier.getSupplierId() == supplierId) {
-					System.out.print("Existing Products: ");
-					if(supplier.getProducts().isEmpty()){
-						System.out.println("None\n");
-						return;
-					}
 					for(Product product: supplier.getProducts()) {
 						System.out.println("\t\t" + product.getName() + " [" + product.getProductId() + "]");
 					}
@@ -294,6 +289,11 @@ public class InventoryService {
 							supplier.setContact(newContact);
 							break outerloop;
 						case "3":
+							System.out.print("Existing Products: ");
+							if(supplier.getProducts().isEmpty()){
+								System.out.println("None\n");
+								return;
+							}
 							while(true) {
 								System.out.print("1. Delete\r\n"
 											+ "2. Update\r\n"
