@@ -250,12 +250,13 @@ public class InventoryService {
 			for(Supplier supplier : inventory.getSuppliers()) {
 				if(supplier.getSupplierId() == supplierId) {
 					inventory.getSuppliers().remove(inventory.getSuppliers().indexOf(supplier));
+					System.out.println("------>Supplier Removed Succesfully<------\n");
 					return;
 				}
 			}
-			System.out.println("------>Supplier Removed Succesfully<------\n");
 		}
 	}
+	
 	
 	public void updateSupplier() {
 		boolean checkEmpty = showSupplierIDs();
@@ -433,7 +434,7 @@ public class InventoryService {
 		for(Supplier supplier: inventory.getSuppliers()) {
 			System.out.println("\t\t"+supplier.getName()+ " [" + supplier.getSupplierId() + "]");
 		}
-		System.out.println("Sr.\tID\tName\tPrice\tQuantity");
+		System.out.println("\nSr.\tID\tName\tPrice\tQuantity");
 		int index = 0;
 		int totalQuantity = 0;
 		double totalPrice = 0;
