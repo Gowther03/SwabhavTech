@@ -1,0 +1,7 @@
+package com.aurionpro.exception;
+
+public class NegativeValueException extends RuntimeException{
+	public String getMessage() {
+		return ANSI_RED+"----"+"Value Cannot Be Negative"+"----"+ANSI_RESET;
+	}
+}

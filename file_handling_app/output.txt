@@ -1,0 +1,4 @@
+HI Welcome to the file handling!
+HI Welcome to the file handling!
+HI Welcome to the file handling!
+HI Welcome to the error handling!

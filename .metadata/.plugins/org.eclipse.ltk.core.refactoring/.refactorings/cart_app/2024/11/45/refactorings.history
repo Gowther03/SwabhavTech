@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MobileNotValidException.java&apos; to &apos;inventory_app/src/com.aurionpro.exception&apos;&#x0D;&#x0A;- Original project: &apos;cart_app&apos;&#x0D;&#x0A;- Destination element: &apos;inventory_app/src/com.aurionpro.exception&apos;&#x0D;&#x0A;- Original element: &apos;com.aurionpro.exceptions.MobileNotValidException.java&apos;" description="Copy compilation unit" destination="=inventory_app/src&lt;com.aurionpro.exception" element1="/src&lt;com.aurionpro.exceptions{MobileNotValidException.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1730783160294" units="1" version="1.0"/>
+</session>

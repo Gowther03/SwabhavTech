@@ -1,0 +1,17 @@
+package com.aurionpro.exception;
+
+import com.aurionpro.model.Product;
+
+public class MinimumStockException extends RuntimeException {
+
+	private Product product;
+	private int quantity;
+	public MinimumStockException(Product product, int quantity){
+		this.product = product;
+		this.quantity = quantity;
+	}
+	public String getMessage() {
+		return "Insufficient Stocks! -->Available stock: "+product.getQuantity();
+	}
+	
+}
