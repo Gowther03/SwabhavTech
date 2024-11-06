@@ -263,74 +263,77 @@ public class InventoryService {
 			int supplierId = supplierIdCheck();
 			for(Supplier supplier : inventory.getSuppliers()){
 				if(supplier.getSupplierId() == supplierId) {
-					System.out.print("1. Name\r\n"
-							+ "2. Contact\r\n"
-							+ "3. Product\r\n"
-							+ "Enter your choice: ");
-					String choice = scanner.next();
-					scanner.nextLine();
-					switch(choice) {
-					case "1":
-						System.out.println("Existing Name: " + supplier.getName());
-						System.out.print("New Name: ");
-						String newName = scanner.nextLine();
-						supplier.setName(newName);
-						break;
-					case "2":
-						System.out.println("Existing Contact: " + supplier.getContact());
-						System.out.println("------>Enter New Contact");
-						String newContact = contactCheck();
-						supplier.setContact(newContact);
-						break;
-					case "3":
-						System.out.print("1. Delete\r\n"
-								+ "2. Update\r\n"
-								+ "3. Add New\r\n"
-								+ "Enter your choice: ");
-						String productChoice = scanner.next();
-						scanner.nextLine();
-						System.out.print("Existing Products: ");
-						if(supplier.getProducts().isEmpty()){
-							System.out.println("None");
-							return;
-						}else {
-							for(Product product: supplier.getProducts()) {
-								System.out.println("\t\t" + product.getName() + " [" + product.getProductId() + "]");
-							}
-							switch(productChoice) {
-							case "1":
-								int supplierProductId = productIdCheck();
-								for(Product product : supplier.getProducts()){
-									if(product.getProductId() == supplierProductId) {
-										supplier.getProducts().remove(supplier.getProducts().indexOf(product));
-										break;
-									}
-								}
-								for(Product product : inventory.getProducts()){
-									if(product.getProductId() == supplierProductId) {
-										inventory.getProducts().remove(inventory.getProducts().indexOf(product));
-										break;
-									}
-								}
-								break;
-							case "2":
-								updateProduct();
-								break;
-							case "3":
-								Product newProduct = createProduct(supplier); 
-								inventory.getProducts().add(newProduct);
-							default:
-								System.out.println("------>Invalid Choice!<------\n");
-								break;
-							}
-						}
-						break;
-					default:
-						System.out.println("------>Invalid Choice!<------\n");
-						break;
+					System.out.print("Existing Products: ");
+					if(supplier.getProducts().isEmpty()){
+						System.out.println("None\n");
+						return;
 					}
+					for(Product product: supplier.getProducts()) {
+						System.out.println("\t\t" + product.getName() + " [" + product.getProductId() + "]");
+					}
+					outerloop:
+					while(true) {
+						System.out.print("1. Name\r\n"
+								+ "2. Contact\r\n"
+								+ "3. Product\r\n"
+								+ "Enter your choice: ");
+						String choice = scanner.next();
+						scanner.nextLine();
+						switch(choice) {
+						case "1":
+							System.out.println("Existing Name: " + supplier.getName());
+							System.out.print("New Name: ");
+							String newName = scanner.nextLine();
+							supplier.setName(newName);
+							break outerloop;
+						case "2":
+							System.out.println("Existing Contact: " + supplier.getContact());
+							System.out.println("------>Enter New Contact");
+							String newContact = contactCheck();
+							supplier.setContact(newContact);
+							break outerloop;
+						case "3":
+							while(true) {
+								System.out.print("1. Delete\r\n"
+											+ "2. Update\r\n"
+											+ "3. Add New\r\n"
+											+ "Enter your choice: ");
+								String productChoice = scanner.next();
+								scanner.nextLine();
+								switch(productChoice) {
+								case "1":
+									int supplierProductId = productIdCheck();
+									for(Product product : supplier.getProducts()){
+										if(product.getProductId() == supplierProductId) {
+											supplier.getProducts().remove(supplier.getProducts().indexOf(product));
+											break;
+										}
+									}
+									for(Product product : inventory.getProducts()){
+										if(product.getProductId() == supplierProductId) {
+											inventory.getProducts().remove(inventory.getProducts().indexOf(product));
+											break;
+										}
+									}
+									break outerloop;
+								case "2":
+									updateProduct();
+									break outerloop;
+								case "3":
+									Product newProduct = createProduct(supplier); 
+									inventory.getProducts().add(newProduct);
+									break outerloop;
+								default:
+									System.out.println("------>Invalid Choice!<------\n");
+									break;
+								}								
+							}
+						default:
+							System.out.println("------>Invalid Choice!<------\n");
+							break;
+						}
 					System.out.println("------>Changes Saved Succesfully!<------\n");
-					break;
+					}
 				}
 			}
 		}
