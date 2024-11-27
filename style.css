@@ -1,0 +1,28 @@
+.Test{
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    border-style:solid;
+    width: 20px;
+    background-color:rgb(139, 115, 115) ;
+}
+.success{
+    color:white;
+    padding: 10px;
+    border-style: solid;
+    background-color:rgb(0, 255, 0) ;
+}
+
+.close{
+    color:white;
+    padding: 10px;
+    border-style: solid;
+    background-color:rgb(240, 240, 0) ;
+}
+.far{
+    color:white;
+    padding: 10px;
+    border-style: solid;
+    background-color:red ;
+}
